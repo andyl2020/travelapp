@@ -1,8 +1,12 @@
 package com.example.firsttestapp;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButtonRouteChoice;
     RadioGroup radioGroupTraffic;
     RadioButton radioButtonTrafficChoice;
+    Button buttonSendText;
 
 
     @Override
@@ -35,8 +40,22 @@ public class MainActivity extends AppCompatActivity {
         mEditText = findViewById(R.id.edit_text);
         radioGroupRoute = findViewById(R.id.radioGroup_Route);
         radioGroupTraffic = findViewById(R.id.radioGroup_traffic);
+        buttonSendText = findViewById(R.id.button_sendText);
+
+        //buttonSendText.setEnabled(false);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
 
     }
+
+    public void textMom(View v) {
+        String phoneNumber = "7789960898";
+        String smsMessage = "here";
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(phoneNumber, null, smsMessage, null, null);
+        Toast.makeText(this, "Message sent to Mom!",
+                Toast.LENGTH_SHORT).show();
+    }
+
 
     public void clear(View v) {
         //String text = mEditText.getText().toString();
