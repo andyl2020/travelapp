@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -22,16 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String FILE_NAME = "example.txt";
 
     EditText mEditText;
-    ToggleButton toggleDate; //T5
-    ToggleButton toggleT1; //T1
-    ToggleButton toggleT2; //T2
-    ToggleButton toggleT4; //T4
-    ToggleButton toggleT5; //T5
-    ToggleButton toggleR1;
-    ToggleButton toggleR2;
-    ToggleButton toggleR3;
     RadioGroup radioGroupRoute;
     RadioButton radioButtonRouteChoice;
+    RadioGroup radioGroupTraffic;
+    RadioButton radioButtonTrafficChoice;
 
 
     @Override
@@ -40,15 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mEditText = findViewById(R.id.edit_text);
-        toggleT1 = findViewById(R.id.toggleButtonT1);
-        toggleT2 = findViewById(R.id.toggleButtonT2);
-        toggleDate = findViewById(R.id.toggleButtonDate);
-        toggleT4 = findViewById(R.id.toggleButtonT4);
-        toggleT5 = findViewById(R.id.toggleButtonT5);
-        toggleR1 = findViewById(R.id.toggleButtonR1);
-        toggleR2 = findViewById(R.id.toggleButtonR2);
-        toggleR3 = findViewById(R.id.toggleButtonR3);
         radioGroupRoute = findViewById(R.id.radioGroup_Route);
+        radioGroupTraffic = findViewById(R.id.radioGroup_traffic);
 
     }
 
@@ -84,47 +70,24 @@ public class MainActivity extends AppCompatActivity {
     public void printTrafficAndRouteInfo(View v) {
         //String text2 = currentTime.toString();
         //String text = "Hi"+"\r\n";
-        String trafficRG = "";
-        String traffic = "";
+        String routeChoiceStr;
+        String trafficChoiceStr;
+        String trafficAndRouteChoice;
         FileOutputStream fos = null;
 
-        int selectedId = radioGroupRoute.getCheckedRadioButtonId();
-        radioButtonRouteChoice = (RadioButton)findViewById(selectedId);
-        trafficRG = radioButtonRouteChoice.getText().toString();
+        int radioButtonRouteChoiceId = radioGroupRoute.getCheckedRadioButtonId();
+        radioButtonRouteChoice = (RadioButton)findViewById(radioButtonRouteChoiceId);
+        routeChoiceStr = radioButtonRouteChoice.getText().toString();
 
-        if (toggleDate.isChecked()){
-            //text = "DATE SAVED: "+text2+"\r\n";
-            traffic = "T3,";
-        }
-        else if (toggleT1.isChecked()){
-            traffic = "T1,";
-        }
-        else if (toggleT2.isChecked()){
-            traffic = "T2,";
-        }
-        else if (toggleT4.isChecked()){
-            traffic = "T4,";
-        }
-        else if (toggleT5.isChecked()){
-            traffic = "T5,";
-        }
+        int radioButtonTrafficChoiceId = radioGroupTraffic.getCheckedRadioButtonId();
+        radioButtonTrafficChoice = (RadioButton)findViewById(radioButtonTrafficChoiceId);
+        trafficChoiceStr = radioButtonTrafficChoice.getText().toString();
 
-        if (toggleR2.isChecked()){
-            //text = "DATE SAVED: "+text2+"\r\n";
-            traffic = traffic + "Alex Fraser bridge";
-        }
-        else if (toggleR1.isChecked()){
-            traffic = traffic + "Grand Tunnel";
-        }
-        else if (toggleR3.isChecked()){
-            traffic = traffic + "Port mann Bridge";
-        }
-
-        traffic = traffic + " RG: " + trafficRG + "\r\n";
+        trafficAndRouteChoice = trafficChoiceStr + "," + routeChoiceStr + "\r\n";
 
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE | MODE_APPEND);
-            fos.write(traffic.getBytes());
+            fos.write(trafficAndRouteChoice.getBytes());
             Toast.makeText(this, "Saved to " + getFilesDir() + "/" + FILE_NAME,
                     Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {

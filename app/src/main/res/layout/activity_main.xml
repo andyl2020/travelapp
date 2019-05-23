@@ -12,12 +12,15 @@
         android:layout_height="100dp" />
 
     <Button
-        android:id="@+id/button_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:id="@+id/button_clear"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="124dp"
         android:onClick="clear"
         android:text="CLEAR" />
 
@@ -26,161 +29,51 @@
         android:id="@+id/button_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button_save"
-        android:layout_below="@+id/button_save"
-        android:layout_marginTop="10dp"
-        android:text="load"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="159dp"
+        android:layout_marginLeft="159dp"
+        android:layout_marginTop="182dp"
         android:onClick="load"
-        android:layout_alignLeft="@+id/button_save" />
+        android:text="load" />
 
     <Button
         android:id="@+id/button_hi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/button_load"
-        android:layout_alignLeft="@+id/button_load"
-        android:layout_below="@+id/button_load"
-        android:layout_marginTop="10dp"
-        android:text="START!!"
-        android:onClick="printTimeDate" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="180dp"
+        android:onClick="printTimeDate"
+        android:text="START!!" />
 
     <Button
         android:id="@+id/button_saveEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_load"
-        android:layout_alignStart="@+id/button_load"
-        android:layout_alignLeft="@+id/button_load"
-        android:layout_marginStart="116dp"
-        android:layout_marginLeft="116dp"
-        android:layout_marginTop="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="282dp"
+        android:layout_marginLeft="282dp"
+        android:layout_marginTop="182dp"
         android:onClick="printTimeDate"
         android:text="STOP" />
 
-    <ToggleButton
-        android:id="@+id/toggleButtonDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="12dp"
-        android:textOff="T3 OFF"
-        android:textOn="T3 ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonT2"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="-68dp"
-        android:layout_marginLeft="-68dp"
-        android:layout_marginTop="13dp"
-        android:textOff="T2 OFF"
-        android:textOn="T2 ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonT1"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="-132dp"
-        android:layout_marginLeft="-132dp"
-        android:layout_marginTop="13dp"
-        android:textOff="T1 OFF"
-        android:textOn="T1 ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonT4"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="13dp"
-        android:textOff="T4 OFF"
-        android:textOn="T4 ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonT5"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="165dp"
-        android:layout_marginLeft="165dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginRight="132dp"
-        android:layout_marginBottom="132dp"
-        android:textOff="T5 OFF"
-        android:textOn="T5 ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonR1"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="-56dp"
-        android:layout_marginLeft="-56dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginRight="132dp"
-        android:layout_marginBottom="132dp"
-        android:textOff="GT OFF"
-        android:textOn="GT ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonR2"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="74dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginRight="132dp"
-        android:layout_marginBottom="132dp"
-        android:textOff="AF OFF"
-        android:textOn="AF ON" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonR3"
-        android:layout_width="50dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/button_hi"
-        android:layout_alignStart="@+id/button_hi"
-        android:layout_alignLeft="@+id/button_hi"
-        android:layout_marginStart="90dp"
-        android:layout_marginLeft="90dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="132dp"
-        android:textOff="PB OFF"
-        android:textOn="PB ON" />
-
     <Button
-        android:id="@+id/button_save2"
+        android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_load"
-        android:layout_alignStart="@+id/button_load"
-        android:layout_alignLeft="@+id/button_load"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="209dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="274dp"
+        android:layout_marginLeft="274dp"
+        android:layout_marginTop="288dp"
         android:onClick="printTrafficAndRouteInfo"
         android:text="SAVE!!" />
 
@@ -188,12 +81,12 @@
         android:id="@+id/radioGroup_Route"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_save2"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginLeft="39dp"
-        android:layout_marginTop="-320dp">
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="277dp">
 
         <RadioButton
             android:id="@+id/radioButton_GT"
@@ -215,6 +108,55 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:text="Port Mann" />
+
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup_traffic"
+        android:layout_width="98dp"
+        android:layout_height="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="244dp">
+
+        <RadioButton
+            android:id="@+id/radioButton_T1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T1" />
+
+        <RadioButton
+            android:id="@+id/radioButton_T2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T2" />
+
+        <RadioButton
+            android:id="@+id/radioButton_T3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T3" />
+
+        <RadioButton
+            android:id="@+id/radioButton_T4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T4" />
+
+        <RadioButton
+            android:id="@+id/radioButton_T5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="T5" />
 
 
     </RadioGroup>
