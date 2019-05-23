@@ -184,4 +184,39 @@
         android:onClick="printTrafficAndRouteInfo"
         android:text="SAVE!!" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup_Route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_save2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="-320dp">
+
+        <RadioButton
+            android:id="@+id/radioButton_GT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Grand Tunnel" />
+
+        <RadioButton
+            android:id="@+id/radioButton_AF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Alex Fraser" />
+
+        <RadioButton
+            android:id="@+id/radioButton_PB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Port Mann" />
+
+
+    </RadioGroup>
+
 </RelativeLayout>

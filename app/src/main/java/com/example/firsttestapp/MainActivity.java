@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     ToggleButton toggleR1;
     ToggleButton toggleR2;
     ToggleButton toggleR3;
+    RadioGroup radioGroupRoute;
+    RadioButton radioButtonRouteChoice;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         toggleR1 = findViewById(R.id.toggleButtonR1);
         toggleR2 = findViewById(R.id.toggleButtonR2);
         toggleR3 = findViewById(R.id.toggleButtonR3);
+        radioGroupRoute = findViewById(R.id.radioGroup_Route);
 
     }
 
@@ -78,8 +84,13 @@ public class MainActivity extends AppCompatActivity {
     public void printTrafficAndRouteInfo(View v) {
         //String text2 = currentTime.toString();
         //String text = "Hi"+"\r\n";
+        String trafficRG = "";
         String traffic = "";
         FileOutputStream fos = null;
+
+        int selectedId = radioGroupRoute.getCheckedRadioButtonId();
+        radioButtonRouteChoice = (RadioButton)findViewById(selectedId);
+        trafficRG = radioButtonRouteChoice.getText().toString();
 
         if (toggleDate.isChecked()){
             //text = "DATE SAVED: "+text2+"\r\n";
@@ -109,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             traffic = traffic + "Port mann Bridge";
         }
 
-        traffic = traffic + "\r\n";
+        traffic = traffic + " RG: " + trafficRG + "\r\n";
 
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE | MODE_APPEND);
