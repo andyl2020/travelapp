@@ -21,6 +21,7 @@
         android:layout_marginStart="168dp"
         android:layout_marginLeft="168dp"
         android:layout_marginTop="124dp"
+        android:enabled="false"
         android:onClick="clear"
         android:text="CLEAR" />
 
@@ -173,5 +174,19 @@
 
 
     </RadioGroup>
+
+    <Switch
+        android:id="@+id/switch_mobileData"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="432dp"
+        android:onClick="toggleMobileData"
+        android:text="Mobile Data" />
+
 
 </RelativeLayout>

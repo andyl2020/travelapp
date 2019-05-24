@@ -1,6 +1,8 @@
 package com.example.firsttestapp;
 
 import android.Manifest;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -18,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroupTraffic;
     RadioButton radioButtonTrafficChoice;
     Button buttonSendText;
+    Switch switchMobileData;
 
 
     @Override
@@ -41,10 +47,48 @@ public class MainActivity extends AppCompatActivity {
         radioGroupRoute = findViewById(R.id.radioGroup_Route);
         radioGroupTraffic = findViewById(R.id.radioGroup_traffic);
         buttonSendText = findViewById(R.id.button_sendText);
+        switchMobileData = findViewById(R.id.switch_mobileData);
 
         //buttonSendText.setEnabled(false);
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.CHANGE_NETWORK_STATE}, 1);
 
+    }
+
+
+    public void toggleMobileData(View v) {
+        boolean switchState = switchMobileData.isChecked();
+        String switchStateStr = String.valueOf(switchState);
+        Toast.makeText(this, "Data on? " + switchStateStr, Toast.LENGTH_SHORT).show();
+        toggleMobileDataConnection(switchState);
+    }
+
+
+    public boolean toggleMobileDataConnection(boolean ON)
+    {
+        try {
+            //create instance of connectivity manager and get system connectivity service
+            final ConnectivityManager conman = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+            //create instance of class and get name of connectivity manager system service class
+            final Class conmanClass  = Class.forName(conman.getClass().getName());
+            //create instance of field and get mService Declared field
+            final Field iConnectivityManagerField= conmanClass.getDeclaredField("mService");
+            //Attempt to set the value of the accessible flag to true
+            iConnectivityManagerField.setAccessible(true);
+            //create instance of object and get the value of field conman
+            final Object iConnectivityManager = iConnectivityManagerField.get(conman);
+            //create instance of class and get the name of iConnectivityManager field
+            final Class iConnectivityManagerClass=  Class.forName(iConnectivityManager.getClass().getName());
+            //create instance of method and get declared method and type
+            final Method setMobileDataEnabledMethod= iConnectivityManagerClass.getDeclaredMethod("setMobileDataEnabled",Boolean.TYPE);
+            //Attempt to set the value of the accessible flag to true
+            setMobileDataEnabledMethod.setAccessible(true);
+            //dynamically invoke the iConnectivityManager object according to your need (true/false)
+            setMobileDataEnabledMethod.invoke(iConnectivityManager, ON);
+        } catch (Exception e){
+        }
+        return true;
     }
 
     public void textMom(View v) {
@@ -184,3 +228,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
