@@ -98,9 +98,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginLeft="146dp"
         android:layout_marginTop="277dp">
+
+        <TextView
+            android:id="@+id/textView_travelRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/radioGroup_Route"
+            android:layout_weight="1"
+            android:text="Travel Route:" />
 
         <RadioButton
             android:id="@+id/radioButton_GT"
@@ -128,14 +136,21 @@
 
     <RadioGroup
         android:id="@+id/radioGroup_traffic"
-        android:layout_width="98dp"
-        android:layout_height="170dp"
+        android:layout_width="92dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="244dp">
+        android:layout_marginStart="71dp"
+        android:layout_marginLeft="71dp"
+        android:layout_marginTop="243dp">
+
+        <TextView
+            android:id="@+id/textView_trafficStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Rate Traffic:" />
 
         <RadioButton
             android:id="@+id/radioButton_T1"
