@@ -1,6 +1,9 @@
 package com.example.firsttestapp;
 
 import android.Manifest;
+import android.content.Context;
+import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -23,6 +27,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private static final String FILE_NAME = "example.txt";
+    boolean stopwatchOn = false;
 
     EditText mEditText;
     RadioGroup radioGroupRoute;
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroupTraffic;
     RadioButton radioButtonTrafficChoice;
     Button buttonSendText;
+    TextView displayStartTime;
 
 
     @Override
@@ -41,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         radioGroupRoute = findViewById(R.id.radioGroup_Route);
         radioGroupTraffic = findViewById(R.id.radioGroup_traffic);
         buttonSendText = findViewById(R.id.button_sendText);
+        displayStartTime = findViewById(R.id.textview_time1);
 
         //buttonSendText.setEnabled(false);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
@@ -128,6 +135,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void printTimeDate(View v) {
         Date currentTime = Calendar.getInstance().getTime();
+        if (!stopwatchOn) {
+            long timeMilliSec = currentTime.getTime();
+            displayStartTime.setText(String.valueOf(timeMilliSec));
+            stopwatchOn = true;
+        }
+        else if (stopwatchOn) {
+            long timeMilliSecStart = Long.parseLong(displayStartTime.getText().toString());
+            long timeMilliSecStop = currentTime.getTime();
+            int timeMinuteDiff = (int)((timeMilliSecStop - timeMilliSecStart)/1000)/60;
+            displayStartTime.setText(timeMinuteDiff+"min");
+            stopwatchOn = false;
+        }
         String text2 = currentTime.toString() + ",";
         FileOutputStream fos = null;
 
@@ -183,4 +202,46 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    // volume controls
+
+    public void muteAudio(){
+        AudioManager mAlramMAnager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_MUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_MUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_MUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_MUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_MUTE, 0);
+        } else {
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_ALARM, true);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_MUSIC, true);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_RING, true);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+        }
+    }
+
+    public void unMuteAudio(){
+        AudioManager mAlramMAnager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_UNMUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_ALARM, AudioManager.ADJUST_UNMUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_UNMUTE,0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_UNMUTE, 0);
+            mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_SYSTEM, AudioManager.ADJUST_UNMUTE, 0);
+        } else {
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_ALARM, false);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_MUSIC, false);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_RING, false);
+            mAlramMAnager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+        }
+    }
+
+
+
+
+    //EOF
 }
