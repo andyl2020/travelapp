@@ -143,8 +143,9 @@ public class MainActivity extends AppCompatActivity {
         else if (stopwatchOn) {
             long timeMilliSecStart = Long.parseLong(displayStartTime.getText().toString());
             long timeMilliSecStop = currentTime.getTime();
-            int timeMinuteDiff = (int)((timeMilliSecStop - timeMilliSecStart)/1000)/60;
-            displayStartTime.setText(timeMinuteDiff+"min");
+            double timeMinuteDiff = ((double)(timeMilliSecStop - timeMilliSecStart)/1000)/60;
+            String s = String.format("%.2f", timeMinuteDiff)+"min";
+            displayStartTime.setText(s);
             stopwatchOn = false;
         }
         String text2 = currentTime.toString() + ",";
