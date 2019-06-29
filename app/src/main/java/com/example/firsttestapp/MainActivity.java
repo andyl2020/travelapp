@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
     // volume controls
 
-    public void muteAudio(){
+    public void muteAudio(View v){
         AudioManager mAlramMAnager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mAlramMAnager.adjustStreamVolume(AudioManager.STREAM_NOTIFICATION, AudioManager.ADJUST_MUTE, 0);
