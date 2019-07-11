@@ -222,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
             mAlramMAnager.setStreamMute(AudioManager.STREAM_RING, true);
             mAlramMAnager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
         }
+        Toast.makeText(this, "Volume Muted!", Toast.LENGTH_SHORT).show();
     }
 
     public void unMuteAudio(){
