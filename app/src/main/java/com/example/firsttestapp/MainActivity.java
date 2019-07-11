@@ -22,8 +22,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String FILE_NAME = "example.txt";
@@ -183,11 +185,21 @@ public class MainActivity extends AppCompatActivity {
             StringBuilder sb = new StringBuilder();
             String text;
 
+            StringBuilder sb_orig = new StringBuilder();
+            List<String> tmp = new ArrayList<String>();
+
             while ((text = br.readLine()) != null) {
-                sb.append(text).append("\n");
+                sb_orig.append(text).append("\n");
+
+                tmp.add(text+"\n");
             }
 
-            mEditText.setText(sb.toString());
+            for(int i=tmp.size()-1;i>=0;i--) {
+                sb.append(tmp.get(i));
+//                System.out.println(tmp.get(i));
+            }
+            mEditText.setText(sb.toString()); //print file in reverse order
+//            mEditText.setText(sb.toString()); //print file in proper order
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
