@@ -1,7 +1,9 @@
 package com.example.firsttestapp;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -235,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
             mAlramMAnager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
         }
         Toast.makeText(this, "Volume Muted!", Toast.LENGTH_SHORT).show();
+
     }
 
     public void unMuteAudio(){
@@ -254,6 +257,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void viewData(View v){
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$DataUsageSummaryActivity"));
+        startActivity(intent);
+
+////        probably more proper way to do it
+//        private static final String SETTINGS_PACKAGE = "com.android.settings";
+//        private static final String SETTINGS_CLASS_DATA_USAGE_SETTINGS = "com.android.settings.Settings$DataUsageSummaryActivity";
+//
+//        try {
+//            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+//            final ComponentName cn = new ComponentName(SETTINGS_PACKAGE, SETTINGS_CLASS_DATA_USAGE_SETTINGS);
+//            intent.setComponent(cn);
+//            context.startActivity(intent);
+//        } catch (ActivityNotFoundException e) {
+//            Log.v(TAG, "Data settings usage Activity is not present");
+//        }
+    }
 
 
 
