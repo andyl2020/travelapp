@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void textMom(View v) {
         String phoneNumber = "7789960898";
-        String smsMessage = "here";
+        String smsMessage = "I'm at work";
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNumber, null, smsMessage, null, null);
         Toast.makeText(this, "Message sent to Mom!",
